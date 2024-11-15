@@ -1,0 +1,4 @@
+qemu-system-aarch64 -M virt -cpu cortex-a72 -kernel kernel8.img -nographic
+ps aux | grep qemu
+qemu-system-aarch64 -M virt -cpu cortex-a72 -kernel kernel8.img -nographic -d in_asm,exec,int,cpu
+pkill -f qemu-system-aarch64
