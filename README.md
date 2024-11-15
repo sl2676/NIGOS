@@ -1,2 +1,7 @@
-# NIGOS
- 
+# NIGOS - ARM Operating System
+
+**NIGOS** is a custom ARM-based operating system designed for embedded devices. The system is built with a focus on efficiency, minimalism, and scalability, providing a solid foundation for running applications and interacting with hardware. Currently, the development process is divided into multiple phases, starting with basic kernel development and progressing through hardware abstraction, user space tools, and system optimizations. 
+
+In its initial phases, NIGOS implements essential features such as kernel loading, memory management, and basic I/O. As the project evolves, it will include multitasking capabilities, basic networking, and graphical output for gaming and user interfaces. The system will support essential development tools like compilers and text editors, eventually providing a simple command-line interface (CLI) and graphical user interface (GUI). Advanced phases will focus on optimizing the system for desktop compatibility, enabling internet browsing, and running applications with hardware acceleration.
+
+With an emphasis on open-source design and system-level programming, NIGOS aims to provide a lightweight yet functional operating system capable of running on desktop environments, offering users the ability to develop, compile, and run code, browse the internet, and engage in basic gaming and multimedia tasks. This project is an ongoing exploration of ARM architecture and embedded systems, providing a foundation for future experimentation and development in the realm of custom operating systems.
