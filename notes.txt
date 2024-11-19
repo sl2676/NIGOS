@@ -1,0 +1,38 @@
+1. Implement Basic Interrupt Handling
+Goal: Set up a basic interrupt service routine (ISR) for handling timer or keyboard interrupts.
+How:
+Configure an interrupt controller (e.g., Generic Interrupt Controller, GIC, on ARM).
+Create an ISR in exceptions.S that responds to interrupts by calling appropriate C functions.
+Use a timer interrupt to print periodically or perform other tasks without a busy-wait delay.
+2. Memory Management
+Goal: Implement basic memory management, starting with a simple allocator.
+How:
+Create a simple memory allocator (e.g., bump allocator or free list).
+Set up memory sections (like .bss and .data) with your linker script.
+You could move to more complex memory management, such as paging, if targeting a more advanced kernel.
+3. Scheduler and Multitasking
+Goal: Implement a basic round-robin scheduler to run multiple tasks in sequence.
+How:
+Create process.c and scheduler.c to handle switching between tasks.
+Implement context switching with functions in switch_context.S.
+This will help you understand process management, which is key in operating systems.
+4. File System and Storage
+Goal: Create a simple file system to store and retrieve data.
+How:
+Start with a RAM-based file system (e.g., a simple flat file structure).
+Design functions to read, write, and manage files, and implement basic block I/O if storage is involved.
+5. User Space Programs (Optional)
+Goal: Add support for loading and running user-space programs.
+How:
+Implement system calls to allow programs to interact with the kernel.
+Create an execution environment with separate memory for user programs and set up privilege levels (EL0 for user, EL1 for kernel on ARM).
+6. Networking (Optional)
+Goal: Set up basic networking (e.g., using UDP or TCP).
+How:
+Implement basic networking protocols, using existing hardware interfaces if supported by QEMU.
+Create kernel functions for network packet handling and parsing.
+7. Debugging and Optimization
+Goal: Make your kernel stable and efficient.
+How:
+Use QEMU’s debugging features or GDB for step-by-step debugging.
+Optimize your code, especially in the UART or ISR handling, and reduce any unnecessary overhead.
