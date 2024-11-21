@@ -2,7 +2,7 @@ CROSS_COMPILE = aarch64-elf-
 CFLAGS = -ffreestanding -O2 -Wall -Wextra
 LDFLAGS = -T linker.ld -nostdlib
 
-SRC = boot.S exceptions.S switch_context.S kernel.c uart.c memory.c string.c process.c scheduler.c
+SRC = boot.S exceptions.S switch_context.S kernel.c uart.c memory.c string.c process.c scheduler.c 
 OBJ = $(patsubst %.c,%.o,$(patsubst %.S,%.o,$(SRC)))
 
 all: kernel8.img

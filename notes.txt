@@ -1,38 +1,67 @@
-1. Implement Basic Interrupt Handling
-Goal: Set up a basic interrupt service routine (ISR) for handling timer or keyboard interrupts.
-How:
-Configure an interrupt controller (e.g., Generic Interrupt Controller, GIC, on ARM).
-Create an ISR in exceptions.S that responds to interrupts by calling appropriate C functions.
-Use a timer interrupt to print periodically or perform other tasks without a busy-wait delay.
-2. Memory Management
-Goal: Implement basic memory management, starting with a simple allocator.
-How:
-Create a simple memory allocator (e.g., bump allocator or free list).
-Set up memory sections (like .bss and .data) with your linker script.
-You could move to more complex memory management, such as paging, if targeting a more advanced kernel.
-3. Scheduler and Multitasking
-Goal: Implement a basic round-robin scheduler to run multiple tasks in sequence.
-How:
-Create process.c and scheduler.c to handle switching between tasks.
-Implement context switching with functions in switch_context.S.
-This will help you understand process management, which is key in operating systems.
-4. File System and Storage
-Goal: Create a simple file system to store and retrieve data.
-How:
-Start with a RAM-based file system (e.g., a simple flat file structure).
-Design functions to read, write, and manage files, and implement basic block I/O if storage is involved.
-5. User Space Programs (Optional)
-Goal: Add support for loading and running user-space programs.
-How:
-Implement system calls to allow programs to interact with the kernel.
-Create an execution environment with separate memory for user programs and set up privilege levels (EL0 for user, EL1 for kernel on ARM).
-6. Networking (Optional)
-Goal: Set up basic networking (e.g., using UDP or TCP).
-How:
-Implement basic networking protocols, using existing hardware interfaces if supported by QEMU.
-Create kernel functions for network packet handling and parsing.
-7. Debugging and Optimization
-Goal: Make your kernel stable and efficient.
-How:
-Use QEMU’s debugging features or GDB for step-by-step debugging.
-Optimize your code, especially in the UART or ISR handling, and reduce any unnecessary overhead.
+Phase 1: Basic Kernel Development
+Set up the basic bootloader and kernel:
+Why: This is essential for understanding how the system boots up and how the CPU interacts with your OS. This will serve as the foundation for all features.
+What to do:
+Focus on loading the kernel.
+Handle basic I/O (e.g., UART).
+Set up memory management.
+Memory management:
+Why: Efficient memory management (heap, stack, paging) is critical for all future functionalities, especially when you are running more complex tasks like gaming and compiling.
+What to do:
+Implement basic heap and stack management.
+Understand the concept of paging (virtual memory).
+Basic multitasking (task scheduler):
+Why: For running multiple applications, including games and browsers, multitasking is a must.
+What to do:
+Implement a simple round-robin scheduler.
+Manage CPU time for tasks.
+Phase 2: Hardware Abstraction Layer and Drivers
+Graphics and Input handling (for gaming and UI):
+Why: To enable gaming and UI for browsing, you'll need to interact with the graphics card and handle user input (keyboard, mouse).
+What to do:
+Implement basic graphics output (text, then moving to a GUI).
+Set up input drivers for keyboard/mouse.
+Network stack for internet browsing:
+Why: Browsing the internet requires networking. You will need to implement TCP/IP stack to communicate over the network.
+What to do:
+Implement a simple TCP/IP stack.
+Set up basic networking interfaces like Ethernet or Wi-Fi.
+Phase 3: User Space and Tools
+Command-line interface (CLI):
+Why: Before creating a full-fledged GUI, you'll need a CLI for interacting with your OS and testing core features like networking and compiling.
+What to do:
+Implement a basic shell.
+Allow interaction with the OS (run programs, check logs).
+Basic text editor and file system:
+Why: You'll need a file system to store and manage data. A basic text editor will be essential for writing code and other configurations.
+What to do:
+Implement a simple file system (FAT, ext2, or your own).
+Write a basic text editor for creating code or text files.
+Phase 4: Advanced Features
+GUI and web browser:
+Why: To browse the internet, you’ll need a GUI for the user to interact with. A basic web browser will rely on your network stack.
+What to do:
+Implement a simple GUI (window management, buttons, etc.).
+Build a simple web browser or port an existing one.
+Compiler and Development Tools:
+Why: A system for compiling code is a major feature. You'll need tools like a C compiler and build system to enable users to write and compile software on your OS.
+What to do:
+Implement a simple C compiler or port a small one (e.g., GCC).
+Set up a build system (like Make) for compiling software.
+Phase 5: System Optimizations and Desktop Compatibility
+Enhancing Compatibility with Desktops:
+Why: To run the OS on desktops, you'll need to ensure compatibility with standard hardware and support for a wide range of peripherals (printers, displays, etc.).
+What to do:
+Add support for more hardware devices.
+Port the kernel to work with modern desktop environments and processors.
+Performance Optimizations:
+Why: As more features get added, your OS will need to be optimized to handle gaming, web browsing, and compiling efficiently.
+What to do:
+Optimize task scheduling, memory usage, and hardware access.
+Final Goal:
+The end result should be a functional operating system capable of:
+
+Running on desktops (both hardware and software compatibility).
+Browsing the internet (with a web browser).
+Running games (with a simple GUI and hardware acceleration).
+Compiling and running code (with tools like a C compiler).

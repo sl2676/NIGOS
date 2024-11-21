@@ -1,0 +1,34 @@
+Based on the roadmap, the next step is to focus on Phase 1: Basic Kernel Development. You need to set up the foundation of your operating system before adding more advanced features. Here's the breakdown of what you should do next:
+
+1. Finalize Kernel Boot Process:
+Why: The boot process is the first step in loading your kernel. This process sets up the environment for your OS to run. You need a reliable bootloader and kernel entry point for your OS.
+Action:
+Review your current boot.S and kernel.c to ensure that the kernel starts properly.
+Ensure that your kernel is able to initialize the CPU and memory correctly, allowing further code execution.
+2. Set up UART for Debugging:
+Why: For now, you'll use UART (Universal Asynchronous Receiver-Transmitter) to output messages for debugging. This will help verify that your kernel is working correctly and assist in debugging any further code.
+Action:
+Make sure the UART is initialized in uart_init() and that you can output debug messages like "Kernel is running!".
+Test sending characters to the console using uart_putc() and sending strings with uart_puts().
+3. Implement Basic Memory Management:
+Why: Memory management (stack, heap) is crucial for any OS. Without it, your OS will not run properly. It's important to have basic memory management before implementing other features.
+Action:
+Set up a simple memory management system. For now, it can be a fixed memory region for stack and heap (you'll refine this later with paging and dynamic memory allocation).
+Start with a static memory allocator for now that will handle the basic heap/stack.
+4. Implement Simple Task Scheduler:
+Why: The task scheduler is needed to run multiple tasks concurrently. Even if your first task is a simple loop, setting up a scheduler will be essential for adding multitasking in the future.
+Action:
+Implement a round-robin task scheduler. It can be a simple one for now, just to demonstrate task switching. Set it up to switch between your kernel_main() function and any other tasks you want to add (even if it's just a busy wait loop).
+Immediate Next Steps:
+Step 1: Debug Boot and Kernel Entry (make sure your kernel can boot up cleanly).
+Step 2: Finalize UART for Debugging (ensure your kernel can send output to the screen).
+Step 3: Set up a basic memory management (start with static allocation, planning for future paging).
+Step 4: Create a simple task scheduler (just a round-robin scheduler to start).
+Once these steps are done, you’ll have a functional basic kernel, and you can build from there by adding more advanced features, such as networking and graphics.
+
+Key Focus for This Stage:
+Kernel Booting (firm entry point).
+Basic debugging with UART.
+Initial Memory Management.
+Basic Task Scheduling.
+Once this phase is complete, you will have a stable base to begin working on the more complex tasks like networking and a GUI.

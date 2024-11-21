@@ -1,6 +1,5 @@
 #include "uart.h"
 #include <stdarg.h>  
-
 #define UART0_BASE 0x09000000
 #define UART_FR (UART0_BASE + 0x18)
 #define UART_DR (UART0_BASE + 0x00)
@@ -13,8 +12,8 @@ void uart_putc(char c) {
     while (*(volatile unsigned int *)UART_FR & (1 << 5)); 
     *(volatile unsigned int *)UART_DR = c;
 }
-
 void uart_puts(const char *str) {
+	if (!str || *str == '\0') return;
     while (*str) {
         uart_putc(*str++);
     }
@@ -82,6 +81,20 @@ void uart_putint(int num) {
     }
 
     uart_puts(&buffer[i + 1]);
+}
+
+void uart_puthex(uint64_t value) {
+    const char *hex_digits = "0123456789ABCDEF";
+    char buffer[17]; 
+    buffer[16] = '\0'; 
+
+    for (int i = 15; i >= 0; i--) {
+        buffer[i] = hex_digits[value & 0xF]; 
+        value >>= 4; 
+    }
+
+    uart_puts("0x");
+    uart_puts(buffer);
 }
 
 
